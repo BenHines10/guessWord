@@ -1,16 +1,15 @@
 import random
-filepath = 'guessWord/words.txt'
+filepath = "guessWord\\words.txt"
 
 word = ""
-gameLength = len(word) + 5
 string1 = ""
 string2 = ""
 letterList = []
 playAgain = True
-username = "Qwerty"
+userDefinedPath = "C:\\Users\\Qwerty\\Desktop\\"
 
 def generateWord(filepath):
-    filepath = ('C:\\Users\\' + username + '\\Desktop\\' + filepath)
+    filepath = (userDefinedPath + filepath)
     f = open(filepath)
     words = f.read()
     words = words.split("\n")
@@ -21,7 +20,6 @@ def generateWord(filepath):
     return word
 
 def buildWord(letterList, word):
-    # the word being built should be a list too and change the letter as it progresses
     deliveredWord = ["_ "] * len(word)
     for i in range(len(word)):
         for j in range(len(letterList)):
@@ -40,6 +38,7 @@ def checkSuccess(deliveredWord, word, userInput):
 
 while playAgain == True:
     word = generateWord(filepath)
+    gameLength = len(word) + 5
     print("Game starting...")
     for i in range(gameLength):
         userInput = input(
@@ -70,8 +69,8 @@ while playAgain == True:
         else:
             print("Input not recognized.")
         i += 1
-        if i > gameLength:
-            print("You ran out of attempts.")
+    if i >= gameLength:
+        print("You ran out of attempts.")
     userInput = input("Play Again? (Y/N): ")
     userInput = userInput.strip().upper()[:1]
     if userInput == "Y":
