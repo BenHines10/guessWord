@@ -1,8 +1,16 @@
 import random
 filepath = 'guessWord/words.txt'
 
+word = ""
+gameLength = len(word) + 5
+string1 = ""
+string2 = ""
+letterList = []
+playAgain = True
+username = "Qwerty"
+
 def generateWord(filepath):
-    filepath = ('C:\\Users\\USERNAME\Desktop\\' + filepath)
+    filepath = ('C:\\Users\\' + username + '\\Desktop\\' + filepath)
     f = open(filepath)
     words = f.read()
     words = words.split("\n")
@@ -11,13 +19,6 @@ def generateWord(filepath):
     word = list(word)
     print("Word = " + "".join(word))
     return word
-
-word = ""
-gameLength = len(word) + 5
-string1 = ""
-string2 = ""
-letterList = []
-playAgain = True
 
 def buildWord(letterList, word):
     # the word being built should be a list too and change the letter as it progresses
