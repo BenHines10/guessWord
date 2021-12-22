@@ -1,16 +1,15 @@
 import random
-filepath = "guessWord\\words.txt"
 
 word = ""
-string1 = ""
-string2 = ""
+wins = 0
+losses = 0
 letterList = []
 playAgain = True
-userDefinedPath = "C:\\Users\\Qwerty\\Desktop\\"
+userDefinedPath = "C:\\Users\\jhine\\Desktop\\words.txt"
 
 def generateWord(filepath):
-    filepath = (userDefinedPath + filepath)
-    f = open(filepath)
+    filepath = ("")
+    f = open(userDefinedPath)
     words = f.read()
     words = words.split("\n")
     word = random.choice(words)
@@ -37,7 +36,7 @@ def checkSuccess(deliveredWord, word, userInput):
     return message
 
 while playAgain == True:
-    word = generateWord(filepath)
+    word = generateWord(userDefinedPath)
     gameLength = len(word) + 5
     print("Game starting...")
     for i in range(gameLength):
@@ -62,7 +61,8 @@ while playAgain == True:
             str(userInput)
             userInput = userInput.strip().upper()
             if str(userInput) == "".join(word):
-                print("You won.")
+                wins += 1
+                print("You won. Total wins = " + str(wins) + ". Total loses = " + str(losses))
                 break
             else:
                 print("Incorrect...")
@@ -70,7 +70,8 @@ while playAgain == True:
             print("Input not recognized.")
         i += 1
     if i >= gameLength:
-        print("You ran out of attempts.")
+        losses += 1
+        print("You ran out of attempts. You lost. Total wins = " + str(wins) + ". Total loses = " + str(losses))
     userInput = input("Play Again? (Y/N): ")
     userInput = userInput.strip().upper()[:1]
     if userInput == "Y":
@@ -78,4 +79,3 @@ while playAgain == True:
     else:
         playAgain = False
         print("Exiting...")
-
