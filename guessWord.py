@@ -5,10 +5,9 @@ wins = 0
 losses = 0
 letterList = []
 playAgain = True
-userDefinedPath = "C:\\Users\\jhine\\Desktop\\words.txt"
+userDefinedPath = "C:\\Users\\Qwerty\\Desktop\\guessWord\\words.txt"
 
-def generateWord(filepath):
-    filepath = ("")
+def generateWord(userDefinedPath):
     f = open(userDefinedPath)
     words = f.read()
     words = words.split("\n")
